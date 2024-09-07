@@ -24,12 +24,20 @@ function bookRead(read) {
     return ""
 }
 
+function addCardDiv(bookObj) {
+  const bookCard = document.createElement("div");
+  bookCard.className = "card"
+  const cardContent = document.createTextNode(bookObj.info());
+  bookCard.appendChild(cardContent);
+  const theDialog = document.querySelector("dialog");
+  document.body.insertBefore(bookCard, theDialog);
+}
+
 function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
-  library.innerText = "";
   for (book of myLibrary) {
-    library.innerText += book.info();
+    addCardDiv(book)
   }
 }
 
