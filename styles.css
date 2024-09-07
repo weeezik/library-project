@@ -6,7 +6,7 @@ div {
   flex: content;
 }
 
-::backdrop {
+/* ::backdrop {
   background-image: linear-gradient(
     45deg,
     magenta,
@@ -15,4 +15,33 @@ div {
     green
   );
   opacity: 0.75;
+} */
+
+dialog {
+  border-radius: 12px;
+  border-color: dodgerblue;
+}
+
+::backdrop {
+  background: dodgerblue;
+  opacity: 75%;
+}
+
+#showDialog {
+  margin: 5%;
+  background-color: rgba(51, 51, 51, 0.05);
+  border-radius: 8px;
+  border-width: 2;
+  border-color: dodgerblue;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 10px 12px;
+  text-align: center;
+}
+:hover#showDialog {
+  background-color: dodgerblue;
+  color: white;
 }
