@@ -3,7 +3,7 @@ const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const read = document.querySelector("#read");
-const submitButton = document.querySelector(".submit-button")
+
 const library = document.querySelector(".library");
 
 
@@ -33,17 +33,12 @@ function addBookToLibrary(title, author, pages, read) {
   }
 }
 
-submitButton.addEventListener('click', (event) => {
-  addBookToLibrary(title.value, author.value, pages.value, read.checked);
-});
-
 
 // DIALOG LOGIC
 
 const showButton = document.getElementById("showDialog");
 const favDialog = document.getElementById("favDialog");
 const outputBox = document.querySelector("output");
-const selectEl = favDialog.querySelector("select");
 const confirmBtn = favDialog.querySelector("#confirmBtn");
 
 // "Show the dialog" button opens the <dialog> modally
@@ -56,12 +51,13 @@ favDialog.addEventListener("close", (e) => {
   outputBox.value =
     favDialog.returnValue === "default"
       ? "No return value."
-      : `ReturnValue: ${favDialog.returnValue}.`; // Have to check for "default" rather than empty string
+      : `ReturnValue: ${favDialog.returnValue}`; // Have to check for "default" rather than empty string
 });
 
 // Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
 confirmBtn.addEventListener("click", (event) => {
   event.preventDefault(); // We don't want to submit this fake form
-  favDialog.close(selectEl.value); // Have to send the select box value here.
+  favDialog.close(title.value); // Have to send the select box value here.
+  addBookToLibrary(title.value, author.value, pages.value, read.checked);
 });
 
